@@ -1,0 +1,77 @@
+// ------------
+//     変数
+// ------------
+$gray : #707070;
+
+// ------------
+//    mixin
+// ------------
+@mixin PC {
+    @media screen and (min-width: 960px) {
+        @content;        
+    } 
+}
+
+@mixin tab {
+    @media screen and (max-width: 959px) {
+        @content;
+    }   
+}
+
+@mixin sp {
+    @media screen and (max-width:600px) {
+        @content;
+    }
+}
+
+
+// ------------
+// 共通のスタイル
+// ------------
+
+html {
+    font-size: 62.5%; //デフォルトの62.5% = 10px
+    width: 100%;
+}
+
+body {
+    font-size: 1.6rem;
+    width: 100%;
+
+}
+
+.inner {
+    width: 100% - 8.3% *2;
+    margin: 26.5% auto 7.2%;
+    height: 100%;
+    @include sp {
+        width: 100% - 5.6% *2;
+        margin: 60px auto 63px;
+    }
+}
+
+.sec-title {
+    font-family: "Roboto";
+    font-size: 1.8rem;
+    letter-spacing: 0.54rem;
+    color: $gray;
+    margin-bottom: 1.1rem;
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    &::after {
+        content: "";
+        border-bottom: 1px solid;
+        width: 100%;
+        display: inline-block;
+        position: absolute;
+        top: 0.9rem;
+        margin-left: 2.25rem;
+        @include sp {
+            width: 4.4rem;
+        }
+    }
+    @include sp {
+        margin-bottom: 5rem;
+    }
+}
